@@ -1,0 +1,10 @@
+---
+- name: install multiple packages
+  hosts: all 
+  connection: ssh
+  tasks:
+    - name: install tree package
+      package: 
+        name: tree
+        state: present
+

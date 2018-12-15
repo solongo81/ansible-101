@@ -1,0 +1,39 @@
+---
+- name: install webserver
+  hosts: all
+  tasks:
+    - name: install httpd
+      package:
+        name: httpd
+        state: present
+    
+
+
+
+    - name: install php
+      package:
+        name: php
+        state: latest
+
+
+
+    - name: install iftp
+      package:
+        name: lftp
+        state: present
+
+
+
+    - name: create index.html file
+      copy:
+        content: "Hello world"
+        dest: "/var/www/html/index.html"
+
+    - name: start webserver
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+
+
+  
